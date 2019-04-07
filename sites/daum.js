@@ -1,7 +1,6 @@
 const cheerio = require('cheerio');
 
 const searchUrl = 'https://www.daum.net';
-const queryUrl = 'https://search.daum.net/search?w=tot&DA=ATG&rtmaxcoll=1TH&q=';
 
 const search = (error, response, body) => {
     if (!error && response.statusCode === 200) {
