@@ -19,7 +19,6 @@
   "homepage": "https://github.com/chcjswo/node-crawler#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "cheerio-httpcli": "^0.7.4",
     "express": "^4.16.4",
     "request": "^2.88.0"
   }
