@@ -3,6 +3,7 @@ const request = require('request');
 
 const naver = require('./sites/naver');
 const melon = require('./sites/melon');
+const daum = require('./sites/daum');
 
 const results = [];
 
@@ -123,9 +124,11 @@ async function main()  {
 
     const naverList = await search(naver.searchUrl, naver.search);
     const melonList = await search(melon.searchUrl, melon.search);
+    const daumList = await search(daum.searchUrl, daum.search);
 
     console.log(naverList);
     console.log(melonList);
+    console.log(daumList);
 
     // searching(searchUrl[0], tag[0], queryUrl[0]);
     // nateSearching(searchUrl[1], tag[1], queryUrl[1]);

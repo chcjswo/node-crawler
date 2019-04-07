@@ -12,6 +12,10 @@ const search = (error, response, body) => {
         const searchTag = $('.ah_roll_area  > .ah_l > .ah_item > a > .ah_k');
 
         searchTag.each((index, item) => {
+            if (index > 9) {
+                return false;
+            }
+
             const result = {};
 
             result.text = `${index + 1}위 ${$(item).text()}`;

@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 
-const searchUrl = 'https://www.naver.com';
-const queryUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_lve&ie=utf8&query=';
+const searchUrl = 'https://www.daum.net';
+const queryUrl = 'https://search.daum.net/search?w=tot&DA=ATG&rtmaxcoll=1TH&q=';
 
 const search = (error, response, body) => {
     if (!error && response.statusCode === 200) {
@@ -9,13 +9,13 @@ const search = (error, response, body) => {
         const results = [];
         const $ = cheerio.load(body);
         // 검색 결과 태그
-        const searchTag = $('.ah_roll_area  > .ah_l > .ah_item > a > .ah_k');
+        const searchTag = $('ol.list_hotissue.issue_row.list_mini > li > div > div > span.txt_issue > a.link_issue');
 
         searchTag.each((index, item) => {
             const result = {};
 
             result.text = `${index + 1}위 ${$(item).text()}`;
-            result.query = `${queryUrl}${encodeURI($(item).text())}`;
+            result.query = $(item).attr('href');
 
             results.push(result);
         });
