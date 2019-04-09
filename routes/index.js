@@ -8,8 +8,18 @@ const daum = require('../sites/daum');
 const zum = require('../sites/zum');
 const search = require('../searchWord');
 
-router.get('/all', (req, res) => {
-    res.json(200);
+router.get('/all', async (req, res) => {
+    const naverSearchList = await search.search(naver.searchUrl, naver.search);
+    const daumSearchList = await search.search(daum.searchUrl, daum.search);
+    const zumSearchList = await search.search(zum.searchUrl, zum.search);
+    const melonSearchList = await search.search(melon.searchUrl, melon.search);
+
+    res.json({
+        naver: naverSearchList,
+        daum: daumSearchList,
+        zum: zumSearchList,
+        melon: melonSearchList
+    });
 });
 
 router.get('/naver', async (req, res) => {
