@@ -14,7 +14,6 @@ const search = (error, response, body) => {
 
         searchTag.each((index, item) => {
             const result = {};
-            
             const re = /\["[\d]{1,2}",\s"(.*?)",\s/g;
 
             // console.log(re.exec($(item).text()));

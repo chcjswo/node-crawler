@@ -23,7 +23,7 @@ const search = (error, response, body) => {
         });
 
         // 결과 만들기
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 40; i++) {
             results.push(`${i + 1}위 ${titleInfo[i]} - ${artistInfo[i]}`);
         }
 
