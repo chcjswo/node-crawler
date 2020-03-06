@@ -1,7 +1,7 @@
 const request = require('request');
 
 const HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
 };
 
 const search = (url, callback) =>  {
@@ -10,8 +10,8 @@ const search = (url, callback) =>  {
         headers: HEADERS
     };
 
-    return new Promise(function(resolve, reject) {
-        request.get(options, function(error, response, body) {
+    return new Promise((resolve, reject) => {
+        request.get(options, (error, response, body) => {
             if (error) {
                 reject(error);
             } else {

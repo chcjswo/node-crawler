@@ -1,22 +1,18 @@
 const cheerio = require('cheerio');
 
-const searchUrl = 'https://www.naver.com';
+const searchUrl = 'https://www.naver.com/srchrank?frm=main&ag=40s&gr=1&ma=-2&si=0&en=0&sp=0';
 const queryUrl = 'https://search.naver.com/search.naver?where=nexearch&sm=top_lve&ie=utf8&query=';
 
 const search = (error, response, body) => {
     if (!error && response.statusCode === 200) {
         // 결과 정보 배열
         const results = [];
-        const $ = cheerio.load(body);
-        // 검색 결과 태그
-        const searchTag = $('.ah_roll_area  > .ah_l > .ah_item > a > .ah_k');
 
-        searchTag.each((index, item) => {
+        const data = JSON.parse(body);
+        data.data.forEach(item => {
             const result = {};
-
-            result.text = `${index + 1}위 ${$(item).text()}`;
-            result.query = `${queryUrl}${encodeURI($(item).text())}`;
-
+            result.text = `${item.rank}위 - ${item.keyword}`;
+            result.query = `${queryUrl}${encodeURI(item.keyword)}`;
             results.push(result);
         });
 

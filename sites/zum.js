@@ -8,14 +8,12 @@ const search = (error, response, body) => {
         const results = [];
         const $ = cheerio.load(body);
         // 검색 결과 태그
-        const searchTag = $('.issue_keyword.d_rank_keyword > ul > li > .d_btn_keyword.d_ready');
+        const searchTag = $('div.issue_keyword_wrap > div.issue_keyword > ul > li > a');
 
         searchTag.each((index, item) => {
             const result = {};
-
             result.text = `${index + 1}위 ${$(item).text().replace(/\n/gi, '')}`;
             result.query = $(item).attr('href');
-
             results.push(result);
         });
 
